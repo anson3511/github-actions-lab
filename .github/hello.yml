@@ -1,0 +1,27 @@
+name: My First GitHub Action
+
+on:
+  push:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print Hello
+        run: echo "Hello CloudX!"
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Show Python Version
+        run: python --version
+
+      - name: Show Git Version
+        run: git --version
