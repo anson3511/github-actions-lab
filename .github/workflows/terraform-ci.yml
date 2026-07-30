@@ -7,7 +7,6 @@ on:
 
 jobs:
   terraform:
-    name: Terraform Validation
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +18,10 @@ jobs:
         with:
           terraform_version: 1.9.8
 
-      - name: Verify Terraform Version
+      - name: Terraform Version
         run: terraform version
 
-      - name: Terraform Format Check
+      - name: Terraform Format
         run: terraform fmt -check -recursive
 
       - name: Terraform Init
@@ -32,10 +31,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
-
-      - name: Upload Terraform Plan
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-plan
-          path: tfplan
+        run: terraform plan
